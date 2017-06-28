@@ -16,13 +16,21 @@ class LuhnChecker
   end
 
   def multiply_odd_indexes
-    take_apart.map.with_index {|x, y| y.odd? ? x*2 : x }
+    take_apart.map.with_index do |x, y|
+      if y.odd?
+        x * 2
+      else
+        x
+      end
+    end
   end
 
   def sum_over_10
     multiply_odd_indexes.map do |i|
       if i > 9
-        i.to_s.chars.each_slice(2).map {|x, y| x.to_i + y.to_i}
+        i.to_s.chars.each_slice(2).map do |x, y|
+          x.to_i + y.to_i
+        end
       else
         i
       end
