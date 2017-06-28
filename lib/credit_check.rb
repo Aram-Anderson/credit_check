@@ -28,9 +28,7 @@ class LuhnChecker
   def sum_over_10
     multiply_odd_indexes.map do |i|
       if i > 9
-        i.to_s.chars.each_slice(2).map do |x, y|
-          x.to_i + y.to_i
-        end
+        i - 9
       else
         i
       end
